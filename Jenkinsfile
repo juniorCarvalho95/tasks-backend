@@ -33,6 +33,14 @@ pipeline{
                 }
             }
         }
+        stage ('Function Test') {
+            steps {
+                dir('function-test') {
+                    git credentialsId: 'login_git_hub', url: 'https://github.com/juniorCarvalho95/task-function-test.git'
+                    bat 'mvn test'
+                }
+            }
+        }
         
 
     }
